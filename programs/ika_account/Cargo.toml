@@ -1,0 +1,48 @@
+[package]
+name = "ika_account"
+version = "0.1.0"
+description = "Ika Portal policy program: Solana-controlled BTC/EVM accounts via Ika dWallets"
+edition.workspace = true
+license = "BSD-3-Clause-Clear"
+rust-version.workspace = true
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "ika_account"
+
+[features]
+default = []
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build"]
+anchor-debug = []
+custom-heap = []
+custom-panic = []
+
+[dependencies]
+anchor-lang = "1.2.0"
+ika-dwallet-anchor = { git = "https://github.com/dwallet-labs/ika-pre-alpha" }
+solana-keccak-hasher = "3.1"
+solana-sha256-hasher = "3.1"
+solana-curve25519 = "3.1"
+ripemd = { version = "0.1", default-features = false }
+
+[dev-dependencies]
+litesvm = "0.17"
+solana-message = "4"
+solana-transaction = { version = "4", features = ["verify"] }
+solana-signer = "3.0.0"
+solana-keypair = "3.0.1"
+solana-account = "4"
+solana-clock = "3"
+k256 = { version = "0.13", features = ["ecdsa", "arithmetic"] }
+sha2 = "0.10"
+sha3 = "0.10"
+hex = "0.4"
+rand = "0.8"
+mock_dwallet = { path = "../mock_dwallet", features = ["no-entrypoint"] }
+test_cpi_owner = { path = "../test_cpi_owner", features = ["no-entrypoint"] }
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(target_os, values("solana"))'] }

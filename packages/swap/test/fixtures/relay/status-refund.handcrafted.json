@@ -1,0 +1,12 @@
+{
+    "status": "refund",
+    "inTxHashes": [
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    ],
+    "txHashes": [
+        "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    ],
+    "failReason": "DEPOSITED_AMOUNT_TOO_LOW_TO_FILL",
+    "updatedAt": 1790800000000,
+    "_note": "HAND-CRAFTED per Relay OpenAPI /intents/status/v3 schema"
+}

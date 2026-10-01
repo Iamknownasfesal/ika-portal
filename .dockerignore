@@ -1,0 +1,15 @@
+**/node_modules
+**/dist
+.git
+.e2e
+.vercel-deploy
+docs/.vitepress/cache
+docs/.vitepress/dist
+contracts/evm/cache
+contracts/evm/broadcast
+target/*
+!target/deploy
+target/deploy/*.json
+keys
+prd.md
+DECISIONS.md

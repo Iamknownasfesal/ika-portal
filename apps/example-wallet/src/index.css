@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--color-zinc-950);
+}
+
+/* Wallet adapter button: match the app's palette. */
+.wallet-adapter-button-trigger {
+  background-color: var(--color-indigo-500);
+  height: 36px;
+  font-size: 14px;
+  border-radius: 8px;
+  padding: 0 14px;
+  font-family: var(--font-sans);
+}
+.wallet-adapter-button-trigger:not([disabled]):hover {
+  background-color: var(--color-indigo-400);
+}
+.wallet-adapter-button-start-icon img {
+  width: 18px;
+  height: 18px;
+}

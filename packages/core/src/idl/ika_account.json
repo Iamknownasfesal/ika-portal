@@ -1,0 +1,2299 @@
+{
+  "address": "Dx7P74pmeMqgPG4iF3VpL5aZ6TZTMiPzcMULnpu2hyje",
+  "metadata": {
+    "name": "ika_account",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Ika Portal policy program: Solana-controlled BTC/EVM accounts via Ika dWallets"
+  },
+  "instructions": [
+    {
+      "name": "apply_policy",
+      "discriminator": [
+        255,
+        235,
+        232,
+        54,
+        183,
+        33,
+        131,
+        224
+      ],
+      "accounts": [
+        {
+          "name": "account",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "approve_intent",
+      "discriminator": [
+        213,
+        94,
+        174,
+        15,
+        36,
+        50,
+        145,
+        18
+      ],
+      "accounts": [
+        {
+          "name": "account",
+          "writable": true,
+          "relations": [
+            "intent"
+          ]
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "intent",
+          "writable": true
+        },
+        {
+          "name": "dwallet"
+        },
+        {
+          "name": "coordinator"
+        },
+        {
+          "name": "cpi_authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  95,
+                  105,
+                  107,
+                  97,
+                  95,
+                  99,
+                  112,
+                  105,
+                  95,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "caller_program",
+          "address": "Dx7P74pmeMqgPG4iF3VpL5aZ6TZTMiPzcMULnpu2hyje"
+        },
+        {
+          "name": "dwallet_program"
+        },
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "cancel_intent",
+      "discriminator": [
+        67,
+        73,
+        238,
+        244,
+        208,
+        89,
+        225,
+        59
+      ],
+      "accounts": [
+        {
+          "name": "account",
+          "writable": true,
+          "relations": [
+            "intent"
+          ]
+        },
+        {
+          "name": "owner",
+          "signer": true,
+          "relations": [
+            "account"
+          ]
+        },
+        {
+          "name": "intent",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "cancel_policy",
+      "discriminator": [
+        244,
+        58,
+        241,
+        221,
+        106,
+        151,
+        94,
+        116
+      ],
+      "accounts": [
+        {
+          "name": "account",
+          "writable": true
+        },
+        {
+          "name": "owner",
+          "signer": true,
+          "relations": [
+            "account"
+          ]
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "create_account",
+      "discriminator": [
+        99,
+        20,
+        130,
+        119,
+        196,
+        235,
+        131,
+        149
+      ],
+      "accounts": [
+        {
+          "name": "account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  99,
+                  99,
+                  111,
+                  117,
+                  110,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              },
+              {
+                "kind": "arg",
+                "path": "args.index"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "signer": true
+        },
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": {
+              "name": "CreateAccountArgs"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "initialize_config",
+      "discriminator": [
+        208,
+        127,
+        21,
+        1,
+        194,
+        190,
+        196,
+        70
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": {
+              "name": "ConfigArgs"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "preview_digests",
+      "discriminator": [
+        102,
+        22,
+        104,
+        68,
+        150,
+        96,
+        221,
+        94
+      ],
+      "accounts": [
+        {
+          "name": "account"
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": {
+              "name": "IntentParams"
+            }
+          }
+        },
+        {
+          "name": "evm_nonce",
+          "type": "u64"
+        }
+      ],
+      "returns": {
+        "vec": {
+          "defined": {
+            "name": "DigestPreview"
+          }
+        }
+      }
+    },
+    {
+      "name": "propose_intent",
+      "discriminator": [
+        235,
+        187,
+        3,
+        3,
+        160,
+        187,
+        162,
+        226
+      ],
+      "accounts": [
+        {
+          "name": "account",
+          "writable": true
+        },
+        {
+          "name": "owner",
+          "signer": true,
+          "relations": [
+            "account"
+          ]
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "intent",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  105,
+                  110,
+                  116,
+                  101,
+                  110,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "account"
+              },
+              {
+                "kind": "account",
+                "path": "account.intent_nonce",
+                "account": "IkaAccount"
+              }
+            ]
+          }
+        },
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": {
+              "name": "IntentParams"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "propose_policy",
+      "discriminator": [
+        76,
+        109,
+        252,
+        233,
+        201,
+        68,
+        11,
+        165
+      ],
+      "accounts": [
+        {
+          "name": "account",
+          "writable": true
+        },
+        {
+          "name": "owner",
+          "signer": true,
+          "relations": [
+            "account"
+          ]
+        }
+      ],
+      "args": [
+        {
+          "name": "next",
+          "type": {
+            "defined": {
+              "name": "Policy"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "register_dwallet",
+      "discriminator": [
+        186,
+        119,
+        139,
+        52,
+        93,
+        184,
+        231,
+        1
+      ],
+      "accounts": [
+        {
+          "name": "account",
+          "writable": true
+        },
+        {
+          "name": "owner",
+          "signer": true,
+          "relations": [
+            "account"
+          ]
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "dwallet"
+        },
+        {
+          "name": "cpi_authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  95,
+                  95,
+                  105,
+                  107,
+                  97,
+                  95,
+                  99,
+                  112,
+                  105,
+                  95,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "claim",
+          "docs": [
+            "Prevents the same dWallet from being registered to a second account."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  108,
+                  97,
+                  105,
+                  109
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "dwallet"
+              }
+            ]
+          }
+        },
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "role",
+          "type": {
+            "defined": {
+              "name": "DWalletRole"
+            }
+          }
+        },
+        {
+          "name": "evm_pubkey_y",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "set_evm_nonce",
+      "discriminator": [
+        30,
+        22,
+        225,
+        11,
+        160,
+        107,
+        106,
+        118
+      ],
+      "accounts": [
+        {
+          "name": "account",
+          "writable": true
+        },
+        {
+          "name": "owner",
+          "signer": true,
+          "relations": [
+            "account"
+          ]
+        }
+      ],
+      "args": [
+        {
+          "name": "chain_id",
+          "type": "u64"
+        },
+        {
+          "name": "nonce",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "update_config",
+      "discriminator": [
+        29,
+        158,
+        252,
+        191,
+        10,
+        83,
+        219,
+        99
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "config"
+          ]
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": {
+              "name": "ConfigArgs"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Config",
+      "discriminator": [
+        155,
+        12,
+        170,
+        224,
+        30,
+        250,
+        204,
+        130
+      ]
+    },
+    {
+      "name": "DWalletClaim",
+      "discriminator": [
+        162,
+        13,
+        167,
+        198,
+        149,
+        5,
+        148,
+        157
+      ]
+    },
+    {
+      "name": "IkaAccount",
+      "discriminator": [
+        24,
+        53,
+        243,
+        250,
+        255,
+        66,
+        186,
+        171
+      ]
+    },
+    {
+      "name": "Intent",
+      "discriminator": [
+        247,
+        162,
+        35,
+        165,
+        254,
+        111,
+        129,
+        109
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "AccountCreated",
+      "discriminator": [
+        70,
+        39,
+        6,
+        173,
+        118,
+        198,
+        190,
+        91
+      ]
+    },
+    {
+      "name": "DWalletRegistered",
+      "discriminator": [
+        215,
+        251,
+        208,
+        184,
+        15,
+        213,
+        181,
+        128
+      ]
+    },
+    {
+      "name": "IntentApproved",
+      "discriminator": [
+        144,
+        44,
+        75,
+        93,
+        58,
+        151,
+        160,
+        172
+      ]
+    },
+    {
+      "name": "IntentCancelled",
+      "discriminator": [
+        39,
+        174,
+        74,
+        165,
+        39,
+        101,
+        119,
+        29
+      ]
+    },
+    {
+      "name": "IntentProposed",
+      "discriminator": [
+        249,
+        245,
+        19,
+        13,
+        26,
+        73,
+        164,
+        131
+      ]
+    },
+    {
+      "name": "PolicyApplied",
+      "discriminator": [
+        224,
+        50,
+        201,
+        229,
+        63,
+        157,
+        248,
+        239
+      ]
+    },
+    {
+      "name": "PolicyProposed",
+      "discriminator": [
+        218,
+        131,
+        42,
+        156,
+        255,
+        118,
+        219,
+        223
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "LimitExceeded",
+      "msg": "Spending limit for this chain/asset window exceeded"
+    },
+    {
+      "code": 6001,
+      "name": "RecipientNotAllowed",
+      "msg": "Recipient is not in the allowlist"
+    },
+    {
+      "code": 6002,
+      "name": "SwapsDisabled",
+      "msg": "Swaps are disabled by policy"
+    },
+    {
+      "code": 6003,
+      "name": "SwapLimitExceeded",
+      "msg": "Swap limit for this chain/asset window exceeded"
+    },
+    {
+      "code": 6004,
+      "name": "FeeTooHigh",
+      "msg": "Fee exceeds the policy cap"
+    },
+    {
+      "code": 6005,
+      "name": "UnknownChain",
+      "msg": "Chain is not configured"
+    },
+    {
+      "code": 6006,
+      "name": "TooManyInputs",
+      "msg": "Too many Bitcoin inputs"
+    },
+    {
+      "code": 6007,
+      "name": "UnknownAsset",
+      "msg": "Asset is not configured for this chain"
+    },
+    {
+      "code": 6008,
+      "name": "InvalidPolicy",
+      "msg": "Invalid policy"
+    },
+    {
+      "code": 6009,
+      "name": "InvalidRecovery",
+      "msg": "Recovery parameters do not match the account mode"
+    },
+    {
+      "code": 6010,
+      "name": "PdaOwnerRequiresPublicShare",
+      "msg": "A PDA owner must use userShare = public"
+    },
+    {
+      "code": 6011,
+      "name": "InvalidDWallet",
+      "msg": "Account is not owned by the configured dWallet program or has a bad layout"
+    },
+    {
+      "code": 6012,
+      "name": "DWalletNotActive",
+      "msg": "dWallet is not active"
+    },
+    {
+      "code": 6013,
+      "name": "WrongDWalletAuthority",
+      "msg": "dWallet authority is not this program's CPI authority (run transfer_ownership first)"
+    },
+    {
+      "code": 6014,
+      "name": "WrongCurve",
+      "msg": "dWallet curve must be secp256k1"
+    },
+    {
+      "code": 6015,
+      "name": "InvalidRole",
+      "msg": "dWallet role is invalid for this mode or already registered"
+    },
+    {
+      "code": 6016,
+      "name": "AccountNotReady",
+      "msg": "Account has no dWallet registered for this chain"
+    },
+    {
+      "code": 6017,
+      "name": "InvalidIntentParams",
+      "msg": "Invalid intent parameters"
+    },
+    {
+      "code": 6018,
+      "name": "InvalidAddress",
+      "msg": "Invalid address"
+    },
+    {
+      "code": 6019,
+      "name": "InsufficientInputs",
+      "msg": "Bitcoin inputs do not cover amount + fee"
+    },
+    {
+      "code": 6020,
+      "name": "EvmNotDelegated",
+      "msg": "Account is not set up for delegated EVM execution on this chain"
+    },
+    {
+      "code": 6021,
+      "name": "RecoveryNotConfigured",
+      "msg": "Recovery is not configured for this account"
+    },
+    {
+      "code": 6022,
+      "name": "DeadlineExpired",
+      "msg": "Deadline has passed"
+    },
+    {
+      "code": 6023,
+      "name": "InvalidPoint",
+      "msg": "Invalid secp256k1 point"
+    },
+    {
+      "code": 6024,
+      "name": "DigestError",
+      "msg": "Digest serialization failed"
+    },
+    {
+      "code": 6025,
+      "name": "IntentNotProposed",
+      "msg": "Intent is not in the proposed state"
+    },
+    {
+      "code": 6026,
+      "name": "NotExecutableYet",
+      "msg": "Intent is not executable yet (delay)"
+    },
+    {
+      "code": 6027,
+      "name": "NoPendingPolicy",
+      "msg": "No pending policy"
+    },
+    {
+      "code": 6028,
+      "name": "PolicyChangeNotReady",
+      "msg": "Policy change delay has not elapsed"
+    },
+    {
+      "code": 6029,
+      "name": "InvalidMessageApproval",
+      "msg": "MessageApproval account does not match the computed PDA"
+    },
+    {
+      "code": 6030,
+      "name": "WrongApprovalCount",
+      "msg": "Wrong number of MessageApproval accounts"
+    },
+    {
+      "code": 6031,
+      "name": "WrongDWallet",
+      "msg": "Wrong dWallet account for this chain"
+    },
+    {
+      "code": 6032,
+      "name": "Overflow",
+      "msg": "Arithmetic overflow"
+    }
+  ],
+  "types": [
+    {
+      "name": "AccountCreated",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "account",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "index",
+            "type": "u16"
+          },
+          {
+            "name": "mode",
+            "type": {
+              "defined": {
+                "name": "Mode"
+              }
+            }
+          },
+          {
+            "name": "user_share",
+            "type": {
+              "defined": {
+                "name": "UserShare"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "AllowEntry",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "chain",
+            "type": {
+              "defined": {
+                "name": "Chain"
+              }
+            }
+          },
+          {
+            "name": "address",
+            "docs": [
+              "EVM: 20-byte address. Bitcoin: the output scriptPubKey."
+            ],
+            "type": "bytes"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Approval",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "message_digest",
+            "docs": [
+              "keccak256(preimage): the Ika `MessageApproval` key."
+            ],
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "final_digest",
+            "docs": [
+              "The 32-byte hash that is actually signed (EIP-712 / tx hash / BIP143 sighash)."
+            ],
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "scheme",
+            "type": "u16"
+          },
+          {
+            "name": "message_approval",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BtcInput",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "txid",
+            "docs": [
+              "Internal byte order (reverse of the displayed txid)."
+            ],
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "vout",
+            "type": "u32"
+          },
+          {
+            "name": "value",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BtcNetwork",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Mainnet"
+          },
+          {
+            "name": "Testnet"
+          },
+          {
+            "name": "Regtest"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BtcParams",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "inputs",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "BtcInput"
+                }
+              }
+            }
+          },
+          {
+            "name": "fee",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Chain",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Bitcoin"
+          },
+          {
+            "name": "Ethereum"
+          },
+          {
+            "name": "Base"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Charge",
+      "docs": [
+        "Spend-window usage recorded at propose time so `cancel_intent` can release it."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "index",
+            "type": "u8"
+          },
+          {
+            "name": "window_start",
+            "type": "i64"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Config",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "pubkey"
+          },
+          {
+            "name": "dwallet_program",
+            "docs": [
+              "Ika dWallet program (or `mock_dwallet` locally). Switching is config-only."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "btc_network",
+            "type": {
+              "defined": {
+                "name": "BtcNetwork"
+              }
+            }
+          },
+          {
+            "name": "max_btc_inputs",
+            "type": "u8"
+          },
+          {
+            "name": "evm_chains",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "EvmChainConfig"
+                }
+              }
+            }
+          },
+          {
+            "name": "tokens",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "TokenConfig"
+                }
+              }
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ConfigArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "dwallet_program",
+            "type": "pubkey"
+          },
+          {
+            "name": "btc_network",
+            "type": {
+              "defined": {
+                "name": "BtcNetwork"
+              }
+            }
+          },
+          {
+            "name": "max_btc_inputs",
+            "type": "u8"
+          },
+          {
+            "name": "evm_chains",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "EvmChainConfig"
+                }
+              }
+            }
+          },
+          {
+            "name": "tokens",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "TokenConfig"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "CreateAccountArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "index",
+            "type": "u16"
+          },
+          {
+            "name": "mode",
+            "type": {
+              "defined": {
+                "name": "Mode"
+              }
+            }
+          },
+          {
+            "name": "user_share",
+            "type": {
+              "defined": {
+                "name": "UserShare"
+              }
+            }
+          },
+          {
+            "name": "ika_user",
+            "type": "pubkey"
+          },
+          {
+            "name": "policy",
+            "type": {
+              "defined": {
+                "name": "Policy"
+              }
+            }
+          },
+          {
+            "name": "recovery",
+            "type": {
+              "option": {
+                "defined": {
+                  "name": "RecoveryParams"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "DWalletClaim",
+      "docs": [
+        "One per dWallet: a dWallet can be registered to exactly one account."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "account",
+            "type": "pubkey"
+          },
+          {
+            "name": "dwallet",
+            "type": "pubkey"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DWalletEntry",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "dwallet",
+            "type": "pubkey"
+          },
+          {
+            "name": "curve",
+            "type": "u16"
+          },
+          {
+            "name": "role",
+            "type": {
+              "defined": {
+                "name": "DWalletRole"
+              }
+            }
+          },
+          {
+            "name": "pubkey",
+            "type": {
+              "array": [
+                "u8",
+                33
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "DWalletRegistered",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "account",
+            "type": "pubkey"
+          },
+          {
+            "name": "dwallet",
+            "type": "pubkey"
+          },
+          {
+            "name": "role",
+            "type": {
+              "defined": {
+                "name": "DWalletRole"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "DWalletRole",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Btc"
+          },
+          {
+            "name": "Evm"
+          },
+          {
+            "name": "Both"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DelayThreshold",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "chain",
+            "type": {
+              "defined": {
+                "name": "Chain"
+              }
+            }
+          },
+          {
+            "name": "asset",
+            "type": {
+              "array": [
+                "u8",
+                20
+              ]
+            }
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DigestPreview",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "message_digest",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "final_digest",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "scheme",
+            "type": "u16"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EvmChainConfig",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "chain",
+            "type": {
+              "defined": {
+                "name": "Chain"
+              }
+            }
+          },
+          {
+            "name": "chain_id",
+            "type": "u64"
+          },
+          {
+            "name": "implementation",
+            "docs": [
+              "`IkaAccount` delegate implementation on this chain (for EIP-7702 setup)."
+            ],
+            "type": {
+              "array": [
+                "u8",
+                20
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "EvmNonce",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "chain_id",
+            "type": "u64"
+          },
+          {
+            "name": "nonce",
+            "docs": [
+              "Next `IkaAccount` nonce this program will sign for."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "delegated",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EvmParams",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Direct",
+            "fields": [
+              {
+                "name": "nonce",
+                "type": "u64"
+              },
+              {
+                "name": "gas_limit",
+                "type": "u64"
+              },
+              {
+                "name": "max_fee_per_gas",
+                "type": "u64"
+              },
+              {
+                "name": "max_priority_fee_per_gas",
+                "type": "u64"
+              }
+            ]
+          },
+          {
+            "name": "Delegated",
+            "fields": [
+              {
+                "name": "deadline",
+                "type": "i64"
+              }
+            ]
+          },
+          {
+            "name": "Setup",
+            "fields": [
+              {
+                "name": "eoa_nonce",
+                "type": "u64"
+              }
+            ]
+          },
+          {
+            "name": "CancelRecovery",
+            "fields": [
+              {
+                "name": "deadline",
+                "type": "i64"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "IkaAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "index",
+            "type": "u16"
+          },
+          {
+            "name": "mode",
+            "type": {
+              "defined": {
+                "name": "Mode"
+              }
+            }
+          },
+          {
+            "name": "user_share",
+            "type": {
+              "defined": {
+                "name": "UserShare"
+              }
+            }
+          },
+          {
+            "name": "ika_user",
+            "docs": [
+              "Ed25519 key authorized to call Ika gRPC `Sign` for this account's approvals."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "dwallets",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "DWalletEntry"
+                }
+              }
+            }
+          },
+          {
+            "name": "btc_pubkey",
+            "type": {
+              "array": [
+                "u8",
+                33
+              ]
+            }
+          },
+          {
+            "name": "btc_pkh",
+            "type": {
+              "array": [
+                "u8",
+                20
+              ]
+            }
+          },
+          {
+            "name": "evm_address",
+            "type": {
+              "array": [
+                "u8",
+                20
+              ]
+            }
+          },
+          {
+            "name": "recovery_pubkey",
+            "type": {
+              "option": {
+                "array": [
+                  "u8",
+                  33
+                ]
+              }
+            }
+          },
+          {
+            "name": "recovery_evm_address",
+            "type": {
+              "array": [
+                "u8",
+                20
+              ]
+            }
+          },
+          {
+            "name": "csv_blocks",
+            "type": "u16"
+          },
+          {
+            "name": "recovery_delay_s",
+            "type": "u32"
+          },
+          {
+            "name": "policy",
+            "type": {
+              "defined": {
+                "name": "Policy"
+              }
+            }
+          },
+          {
+            "name": "pending_policy",
+            "type": {
+              "option": {
+                "defined": {
+                  "name": "Policy"
+                }
+              }
+            }
+          },
+          {
+            "name": "pending_policy_at",
+            "type": "i64"
+          },
+          {
+            "name": "spend",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "SpendWindow"
+                }
+              }
+            }
+          },
+          {
+            "name": "swap_spend",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "SpendWindow"
+                }
+              }
+            }
+          },
+          {
+            "name": "intent_nonce",
+            "type": "u64"
+          },
+          {
+            "name": "evm_nonces",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "EvmNonce"
+                }
+              }
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Intent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "account",
+            "type": "pubkey"
+          },
+          {
+            "name": "nonce",
+            "type": "u64"
+          },
+          {
+            "name": "params",
+            "type": {
+              "defined": {
+                "name": "IntentParams"
+              }
+            }
+          },
+          {
+            "name": "status",
+            "type": {
+              "defined": {
+                "name": "IntentStatus"
+              }
+            }
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          },
+          {
+            "name": "executable_at",
+            "type": "i64"
+          },
+          {
+            "name": "evm_nonce",
+            "docs": [
+              "EVM `IkaAccount` nonce bound into the signed digest (delegated / cancel-recovery)."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "limit_charge",
+            "type": {
+              "defined": {
+                "name": "Charge"
+              }
+            }
+          },
+          {
+            "name": "swap_charge",
+            "type": {
+              "defined": {
+                "name": "Charge"
+              }
+            }
+          },
+          {
+            "name": "approvals",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "Approval"
+                }
+              }
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "IntentApproved",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "account",
+            "type": "pubkey"
+          },
+          {
+            "name": "intent",
+            "type": "pubkey"
+          },
+          {
+            "name": "evm_nonce",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "IntentCancelled",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "account",
+            "type": "pubkey"
+          },
+          {
+            "name": "intent",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "IntentKind",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Send"
+          },
+          {
+            "name": "Swap"
+          },
+          {
+            "name": "EvmSetup"
+          },
+          {
+            "name": "EvmCancelRecovery"
+          }
+        ]
+      }
+    },
+    {
+      "name": "IntentParams",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "kind",
+            "type": {
+              "defined": {
+                "name": "IntentKind"
+              }
+            }
+          },
+          {
+            "name": "chain",
+            "type": {
+              "defined": {
+                "name": "Chain"
+              }
+            }
+          },
+          {
+            "name": "asset",
+            "type": {
+              "array": [
+                "u8",
+                20
+              ]
+            }
+          },
+          {
+            "name": "to",
+            "docs": [
+              "EVM: 20-byte address. Bitcoin: recipient scriptPubKey."
+            ],
+            "type": "bytes"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "evm",
+            "type": {
+              "option": {
+                "defined": {
+                  "name": "EvmParams"
+                }
+              }
+            }
+          },
+          {
+            "name": "btc",
+            "type": {
+              "option": {
+                "defined": {
+                  "name": "BtcParams"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "IntentProposed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "account",
+            "type": "pubkey"
+          },
+          {
+            "name": "intent",
+            "type": "pubkey"
+          },
+          {
+            "name": "nonce",
+            "type": "u64"
+          },
+          {
+            "name": "executable_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "IntentStatus",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Proposed"
+          },
+          {
+            "name": "Approved"
+          },
+          {
+            "name": "Cancelled"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Limit",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "chain",
+            "type": {
+              "defined": {
+                "name": "Chain"
+              }
+            }
+          },
+          {
+            "name": "asset",
+            "type": {
+              "array": [
+                "u8",
+                20
+              ]
+            }
+          },
+          {
+            "name": "max_per_window",
+            "type": "u64"
+          },
+          {
+            "name": "window_s",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Mode",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Recoverable"
+          },
+          {
+            "name": "Enforced"
+          },
+          {
+            "name": "EnforcedRecovery"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Policy",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "limits",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "Limit"
+                }
+              }
+            }
+          },
+          {
+            "name": "allowlist_enabled",
+            "type": "bool"
+          },
+          {
+            "name": "allowlist",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "AllowEntry"
+                }
+              }
+            }
+          },
+          {
+            "name": "delay_thresholds",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "DelayThreshold"
+                }
+              }
+            }
+          },
+          {
+            "name": "delay_s",
+            "type": "u32"
+          },
+          {
+            "name": "swaps_enabled",
+            "type": "bool"
+          },
+          {
+            "name": "swap_limits",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "Limit"
+                }
+              }
+            }
+          },
+          {
+            "name": "max_btc_fee_sats",
+            "type": "u64"
+          },
+          {
+            "name": "max_evm_fee_wei",
+            "docs": [
+              "Cap on `gas_limit * max_fee_per_gas` for direct (self-paid) EVM transactions."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "policy_change_delay_s",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PolicyApplied",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "account",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PolicyProposed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "account",
+            "type": "pubkey"
+          },
+          {
+            "name": "effective_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RecoveryParams",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "pubkey",
+            "docs": [
+              "Compressed secp256k1 recovery key, generated and kept by the user."
+            ],
+            "type": {
+              "array": [
+                "u8",
+                33
+              ]
+            }
+          },
+          {
+            "name": "pubkey_y",
+            "docs": [
+              "Uncompressed Y of `pubkey`; verified on-chain, used for the EVM address."
+            ],
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "csv_blocks",
+            "type": "u16"
+          },
+          {
+            "name": "recovery_delay_s",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SpendWindow",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "window_start",
+            "type": "i64"
+          },
+          {
+            "name": "used",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TokenConfig",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "chain",
+            "type": {
+              "defined": {
+                "name": "Chain"
+              }
+            }
+          },
+          {
+            "name": "address",
+            "type": {
+              "array": [
+                "u8",
+                20
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserShare",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Public"
+          },
+          {
+            "name": "Encrypted"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+    "quote": {
+        "amountIn": "100000",
+        "amountInFormatted": "0.001",
+        "amountInUsd": "83.583000000000",
+        "minAmountIn": "100000",
+        "amountOut": "83284843",
+        "amountOutFormatted": "83.284843",
+        "amountOutUsd": "83.266520334540",
+        "minAmountOut": "82451994",
+        "timeEstimate": 807,
+        "refundFee": "1900",
+        "withdrawFee": "2400"
+    },
+    "quoteRequest": {
+        "dry": true,
+        "depositMode": "SIMPLE",
+        "swapType": "EXACT_INPUT",
+        "slippageTolerance": 100,
+        "originAsset": "1cs_v1:btc:native:coin",
+        "depositType": "ORIGIN_CHAIN",
+        "destinationAsset": "nep141:base-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913.omft.near",
+        "amount": "100000",
+        "refundTo": "bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq",
+        "refundType": "ORIGIN_CHAIN",
+        "recipient": "0x2527D02599Ba641c19FEa793cD0F167589a0f10D",
+        "recipientType": "DESTINATION_CHAIN",
+        "deadline": "2026-09-30T21:13:05.000Z",
+        "confidentiality": "public",
+        "quoteWaitingTimeMs": 0,
+        "appFees": [
+            {
+                "recipient": "ika-integrator.near",
+                "fee": 15
+            },
+            {
+                "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+                "fee": 20
+            }
+        ],
+        "insured": false
+    },
+    "signature": "ed25519:5jyyqkcqjyANxSGK63nHFcpZZHaqSytz6rxdsiVXzGNcpgBdnnqC84hrELuW6uJB541dBmC2GEFgxw3yd2gt8SaZ",
+    "timestamp": "2026-09-30T20:13:06.022Z",
+    "correlationId": "e4d59b79-1ee2-43dc-b57e-5771864c708e"
+}

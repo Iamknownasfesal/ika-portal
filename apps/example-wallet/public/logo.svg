@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c1450"/><stop offset="1" stop-color="#0a1c26"/></linearGradient>
+    <linearGradient id="ring" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#8b6cff"/><stop offset=".6" stop-color="#4f8dff"/><stop offset="1" stop-color="#1fd6b4"/></linearGradient>
+    <radialGradient id="core" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffffff"/><stop offset=".7" stop-color="#d9cfff"/><stop offset="1" stop-color="#a48bff"/></radialGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#7c5cff" stop-opacity=".55"/><stop offset="1" stop-color="#7c5cff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="url(#bg)"/>
+  <circle cx="60" cy="68" r="34" fill="url(#glow)"/>
+  <!-- portal ring, opening toward the upper right -->
+  <circle cx="60" cy="68" r="34" fill="none" stroke="url(#ring)" stroke-width="11" stroke-linecap="round" stroke-dasharray="168 46" transform="rotate(-20 60 68)"/>
+  <!-- core (Solana owner) -->
+  <circle cx="60" cy="68" r="10" fill="url(#core)"/>
+  <!-- chains streaming out through the opening -->
+  <circle cx="84" cy="44" r="6.5" fill="#ffffff"/>
+  <circle cx="97" cy="31" r="4.8" fill="#8ff0dd"/>
+  <circle cx="107" cy="21" r="3.4" fill="#1fd6b4"/>
+</svg>

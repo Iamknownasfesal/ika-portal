@@ -1,0 +1,39 @@
+# Builds and tests everything except the devnet scripts. End-to-end tests run
+# against the Docker stack in docker/compose.yaml (Solana, Anvil x2, bitcoind, relayer).
+name: ci
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: pnpm }
+      - uses: foundry-rs/foundry-toolchain@v1
+
+      - name: Solana CLI (cargo-build-sbf)
+        run: |
+          sh -c "$(curl -sSfL https://release.anza.xyz/v4.3.0/install)"
+          echo "$HOME/.local/share/solana/install/active_release/bin" >> "$GITHUB_PATH"
+
+      - name: Build programs
+        run: for p in ika_account mock_dwallet test_cpi_owner; do cargo build-sbf --manifest-path programs/$p/Cargo.toml; done
+      - run: cargo test -p ika_account
+      - run: cd contracts/evm && forge test
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm docs:build   # fails on dead links
+
+      - name: Start local networks (Docker)
+        run: docker compose -f docker/compose.yaml up -d --build --wait
+      - run: pnpm test:e2e:docker
+      - name: Network logs
+        if: failure()
+        run: docker compose -f docker/compose.yaml logs --tail 200

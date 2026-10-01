@@ -1,0 +1,654 @@
+{
+    "type": "lifi",
+    "id": "d32d9f6e-78fb-4406-8324-afc9fcb8961b:0",
+    "tool": "near",
+    "toolDetails": {
+        "key": "near",
+        "name": "NearIntents",
+        "logoURI": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/bridges/near.svg"
+    },
+    "action": {
+        "fromToken": {
+            "address": "bitcoin",
+            "chainId": 20000000000001,
+            "symbol": "BTC",
+            "decimals": 8,
+            "name": "Bitcoin",
+            "coinKey": "BTC",
+            "logoURI": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
+            "priceUSD": "83738.74876002801",
+            "tags": [
+                "major_asset"
+            ],
+            "verificationStatus": "verified",
+            "verificationStatusBreakdown": [
+                {
+                    "provider": "hypernative",
+                    "result": "verified",
+                    "providerResult": "accept"
+                }
+            ]
+        },
+        "fromAmount": "100000",
+        "toToken": {
+            "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+            "chainId": 8453,
+            "symbol": "USDC",
+            "decimals": 6,
+            "name": "USD Coin",
+            "coinKey": "USDC",
+            "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png",
+            "priceUSD": "0.9949329896",
+            "tags": [
+                "stablecoin"
+            ],
+            "verificationStatus": "verified",
+            "verificationStatusBreakdown": [
+                {
+                    "provider": "hypernative",
+                    "result": "verified",
+                    "providerResult": "accept"
+                }
+            ]
+        },
+        "fromChainId": 20000000000001,
+        "toChainId": 8453,
+        "slippage": 0.01,
+        "fromAddress": "bc1qgdjqv0av3q56jvd82tkdjpy7gdp9ut8tlqmgrpmv24sq90ecnvqqjwvw97",
+        "toAddress": "0x2527D02599Ba641c19FEa793cD0F167589a0f10D"
+    },
+    "estimate": {
+        "tool": "near",
+        "fromAmount": "100000",
+        "toAmount": "83315047",
+        "toAmountMin": "82481896",
+        "gasCosts": [
+            {
+                "type": "SEND",
+                "price": "6",
+                "estimate": "198",
+                "limit": "198",
+                "amount": "1188",
+                "amountUSD": "0.9948",
+                "token": {
+                    "address": "bitcoin",
+                    "chainId": 20000000000001,
+                    "symbol": "BTC",
+                    "decimals": 8,
+                    "name": "Bitcoin",
+                    "coinKey": "BTC",
+                    "logoURI": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
+                    "priceUSD": "83738.74876002801",
+                    "tags": [
+                        "major_asset"
+                    ],
+                    "verificationStatus": "verified",
+                    "verificationStatusBreakdown": [
+                        {
+                            "provider": "hypernative",
+                            "result": "verified",
+                            "providerResult": "accept"
+                        }
+                    ]
+                }
+            }
+        ],
+        "executionDuration": 1707,
+        "approvalAddress": "0x1231DEB6f5749EF6cE6943a275A1D3E7486F4EaE",
+        "feeCosts": [
+            {
+                "name": "LIFI Fixed Fee",
+                "description": "Fixed LIFI fee, independent of any other fee",
+                "token": {
+                    "address": "bitcoin",
+                    "chainId": 20000000000001,
+                    "symbol": "BTC",
+                    "decimals": 8,
+                    "name": "Bitcoin",
+                    "coinKey": "BTC",
+                    "logoURI": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
+                    "priceUSD": "83738.74876002801",
+                    "tags": [
+                        "major_asset"
+                    ],
+                    "verificationStatus": "verified",
+                    "verificationStatusBreakdown": [
+                        {
+                            "provider": "hypernative",
+                            "result": "verified",
+                            "providerResult": "accept"
+                        }
+                    ]
+                },
+                "amount": "250",
+                "amountUSD": "0.2093",
+                "percentage": "0.0025",
+                "included": true,
+                "feeSplit": {
+                    "lifiFee": "250",
+                    "integratorFee": "0",
+                    "recipients": [
+                        {
+                            "name": "lifi",
+                            "type": "FIXED",
+                            "fee": "250"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "NearIntents Protocol Fee",
+                "description": "Fee taken by NearIntents for the protocol",
+                "token": {
+                    "address": "bitcoin",
+                    "chainId": 20000000000001,
+                    "symbol": "BTC",
+                    "decimals": 8,
+                    "name": "Bitcoin",
+                    "coinKey": "BTC",
+                    "logoURI": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
+                    "priceUSD": "83738.74876002801",
+                    "tags": [
+                        "major_asset"
+                    ],
+                    "verificationStatus": "verified",
+                    "verificationStatusBreakdown": [
+                        {
+                            "provider": "hypernative",
+                            "result": "verified",
+                            "providerResult": "accept"
+                        }
+                    ]
+                },
+                "amount": "10",
+                "amountUSD": "0.0084",
+                "percentage": "0.0001",
+                "included": true
+            },
+            {
+                "name": "1ClickSwap API Fee",
+                "description": "Fee taken by 1ClickSwap for the API call",
+                "token": {
+                    "address": "bitcoin",
+                    "chainId": 20000000000001,
+                    "symbol": "BTC",
+                    "decimals": 8,
+                    "name": "Bitcoin",
+                    "coinKey": "BTC",
+                    "logoURI": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
+                    "priceUSD": "83738.74876002801",
+                    "tags": [
+                        "major_asset"
+                    ],
+                    "verificationStatus": "verified",
+                    "verificationStatusBreakdown": [
+                        {
+                            "provider": "hypernative",
+                            "result": "verified",
+                            "providerResult": "accept"
+                        }
+                    ]
+                },
+                "amount": "10",
+                "amountUSD": "0.0084",
+                "percentage": "0.0001",
+                "included": true
+            },
+            {
+                "name": "NearIntents App Fee",
+                "description": "Affiliate fee",
+                "token": {
+                    "address": "bitcoin",
+                    "chainId": 20000000000001,
+                    "symbol": "BTC",
+                    "decimals": 8,
+                    "name": "Bitcoin",
+                    "coinKey": "BTC",
+                    "logoURI": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
+                    "priceUSD": "83738.74876002801",
+                    "tags": [
+                        "major_asset"
+                    ],
+                    "verificationStatus": "verified",
+                    "verificationStatusBreakdown": [
+                        {
+                            "provider": "hypernative",
+                            "result": "verified",
+                            "providerResult": "accept"
+                        }
+                    ]
+                },
+                "amount": "100",
+                "amountUSD": "0.0837",
+                "percentage": "0.001",
+                "included": true
+            }
+        ],
+        "toolData": {
+            "quote": {
+                "correlationId": "3d8987ef-bcb9-466f-9106-106d7324e3ce",
+                "quote": {
+                    "depositAddress": "bc1q3hve77l2m7p2wwe35h5cffywepwhje4ayfz2py",
+                    "amountIn": "99750",
+                    "amountOut": "83315047",
+                    "minAmountOut": "82481896",
+                    "deadline": "2026-10-03T21:14:49.946Z",
+                    "timeEstimate": 807
+                }
+            },
+            "destinationToken": {
+                "assetId": "nep141:base-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913.omft.near",
+                "blockchain": "base",
+                "symbol": "USDC",
+                "contractAddress": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+            },
+            "refundTo": "bc1qgdjqv0av3q56jvd82tkdjpy7gdp9ut8tlqmgrpmv24sq90ecnvqqjwvw97"
+        },
+        "fromAmountUSD": "83.7387",
+        "toAmountUSD": "82.8929"
+    },
+    "includedSteps": [
+        {
+            "id": "18d5c4db-b491-47c6-ac89-4464eb505534",
+            "type": "protocol",
+            "action": {
+                "fromChainId": 20000000000001,
+                "fromAmount": "100000",
+                "fromToken": {
+                    "address": "bitcoin",
+                    "chainId": 20000000000001,
+                    "symbol": "BTC",
+                    "decimals": 8,
+                    "name": "Bitcoin",
+                    "coinKey": "BTC",
+                    "logoURI": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
+                    "priceUSD": "83738.74876002801",
+                    "tags": [
+                        "major_asset"
+                    ],
+                    "verificationStatus": "verified",
+                    "verificationStatusBreakdown": [
+                        {
+                            "provider": "hypernative",
+                            "result": "verified",
+                            "providerResult": "accept"
+                        }
+                    ]
+                },
+                "toChainId": 20000000000001,
+                "toToken": {
+                    "address": "bitcoin",
+                    "chainId": 20000000000001,
+                    "symbol": "BTC",
+                    "decimals": 8,
+                    "name": "Bitcoin",
+                    "coinKey": "BTC",
+                    "logoURI": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
+                    "priceUSD": "83738.74876002801",
+                    "tags": [
+                        "major_asset"
+                    ],
+                    "verificationStatus": "verified",
+                    "verificationStatusBreakdown": [
+                        {
+                            "provider": "hypernative",
+                            "result": "verified",
+                            "providerResult": "accept"
+                        }
+                    ]
+                },
+                "slippage": 0.01,
+                "fromAddress": "bc1qgdjqv0av3q56jvd82tkdjpy7gdp9ut8tlqmgrpmv24sq90ecnvqqjwvw97",
+                "toAddress": "bc1qgdjqv0av3q56jvd82tkdjpy7gdp9ut8tlqmgrpmv24sq90ecnvqqjwvw97",
+                "jitoBundle": false,
+                "integratorFees": {
+                    "feePercent": 0.0025,
+                    "sourceAmount": {
+                        "s": 1,
+                        "e": 5,
+                        "c": [
+                            100000
+                        ]
+                    },
+                    "totalFee": {
+                        "s": 1,
+                        "e": 2,
+                        "c": [
+                            250
+                        ]
+                    },
+                    "recipients": [
+                        {
+                            "name": "lifi",
+                            "type": "FIXED",
+                            "fee": {
+                                "s": 1,
+                                "e": 2,
+                                "c": [
+                                    250
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "integratorId": "ika-portal"
+            },
+            "estimate": {
+                "fromAmount": "100000",
+                "toAmount": "99750",
+                "toAmountMin": "99750",
+                "tool": "feeCollection",
+                "approvalAddress": "0x0000000000000000000000000000000000000000",
+                "gasCosts": [
+                    {
+                        "type": "SEND",
+                        "price": "4",
+                        "estimate": "80",
+                        "limit": "104",
+                        "amount": "320",
+                        "amountUSD": "0.2680",
+                        "token": {
+                            "address": "bitcoin",
+                            "chainId": 20000000000001,
+                            "symbol": "BTC",
+                            "decimals": 8,
+                            "name": "Bitcoin",
+                            "coinKey": "BTC",
+                            "logoURI": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
+                            "priceUSD": "83738.74876002801",
+                            "tags": [
+                                "major_asset"
+                            ],
+                            "verificationStatus": "verified",
+                            "verificationStatusBreakdown": [
+                                {
+                                    "provider": "hypernative",
+                                    "result": "verified",
+                                    "providerResult": "accept"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "feeCosts": [
+                    {
+                        "name": "LIFI Fixed Fee",
+                        "description": "Fixed LIFI fee, independent of any other fee",
+                        "token": {
+                            "address": "bitcoin",
+                            "chainId": 20000000000001,
+                            "symbol": "BTC",
+                            "decimals": 8,
+                            "name": "Bitcoin",
+                            "coinKey": "BTC",
+                            "logoURI": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
+                            "priceUSD": "83738.74876002801",
+                            "tags": [
+                                "major_asset"
+                            ],
+                            "verificationStatus": "verified",
+                            "verificationStatusBreakdown": [
+                                {
+                                    "provider": "hypernative",
+                                    "result": "verified",
+                                    "providerResult": "accept"
+                                }
+                            ]
+                        },
+                        "amount": "250",
+                        "amountUSD": "0.2093",
+                        "percentage": "0.0025",
+                        "included": true,
+                        "feeSplit": {
+                            "lifiFee": "250",
+                            "integratorFee": "0",
+                            "recipients": [
+                                {
+                                    "name": "lifi",
+                                    "type": "FIXED",
+                                    "fee": "250"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "executionDuration": 0
+            },
+            "tool": "feeCollection",
+            "toolDetails": {
+                "key": "feeCollection",
+                "name": "Integrator Fee",
+                "logoURI": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/protocols/feeCollection.svg"
+            }
+        },
+        {
+            "id": "65e9d29f-8b9c-44fb-a88c-57b5182e5d94",
+            "type": "cross",
+            "action": {
+                "fromChainId": 20000000000001,
+                "fromAmount": "99750",
+                "fromToken": {
+                    "address": "bitcoin",
+                    "chainId": 20000000000001,
+                    "symbol": "BTC",
+                    "decimals": 8,
+                    "name": "Bitcoin",
+                    "coinKey": "BTC",
+                    "logoURI": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
+                    "priceUSD": "83738.74876002801",
+                    "tags": [
+                        "major_asset"
+                    ],
+                    "verificationStatus": "verified",
+                    "verificationStatusBreakdown": [
+                        {
+                            "provider": "hypernative",
+                            "result": "verified",
+                            "providerResult": "accept"
+                        }
+                    ]
+                },
+                "toChainId": 8453,
+                "toToken": {
+                    "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+                    "chainId": 8453,
+                    "symbol": "USDC",
+                    "decimals": 6,
+                    "name": "USD Coin",
+                    "coinKey": "USDC",
+                    "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png",
+                    "priceUSD": "0.9949329896",
+                    "tags": [
+                        "stablecoin"
+                    ],
+                    "verificationStatus": "verified",
+                    "verificationStatusBreakdown": [
+                        {
+                            "provider": "hypernative",
+                            "result": "verified",
+                            "providerResult": "accept"
+                        }
+                    ]
+                },
+                "slippage": 0.01,
+                "fromAddress": "bc1qgdjqv0av3q56jvd82tkdjpy7gdp9ut8tlqmgrpmv24sq90ecnvqqjwvw97",
+                "toAddress": "0x2527D02599Ba641c19FEa793cD0F167589a0f10D",
+                "jitoBundle": false,
+                "integratorFees": {
+                    "feePercent": 0.0025,
+                    "sourceAmount": {
+                        "s": 1,
+                        "e": 5,
+                        "c": [
+                            100000
+                        ]
+                    },
+                    "totalFee": {
+                        "s": 1,
+                        "e": 2,
+                        "c": [
+                            250
+                        ]
+                    },
+                    "recipients": [
+                        {
+                            "name": "lifi",
+                            "type": "FIXED",
+                            "fee": {
+                                "s": 1,
+                                "e": 2,
+                                "c": [
+                                    250
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "integratorId": "ika-portal",
+                "destinationGasConsumption": "0"
+            },
+            "estimate": {
+                "tool": "near",
+                "fromAmount": "99750",
+                "toAmount": "83315047",
+                "toAmountMin": "82481896",
+                "gasCosts": [
+                    {
+                        "type": "SEND",
+                        "price": "4",
+                        "estimate": "225",
+                        "limit": "293",
+                        "amount": "900",
+                        "amountUSD": "0.7536",
+                        "token": {
+                            "address": "bitcoin",
+                            "chainId": 20000000000001,
+                            "symbol": "BTC",
+                            "decimals": 8,
+                            "name": "Bitcoin",
+                            "coinKey": "BTC",
+                            "logoURI": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
+                            "priceUSD": "83738.74876002801",
+                            "tags": [
+                                "major_asset"
+                            ],
+                            "verificationStatus": "verified",
+                            "verificationStatusBreakdown": [
+                                {
+                                    "provider": "hypernative",
+                                    "result": "verified",
+                                    "providerResult": "accept"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "executionDuration": 1707,
+                "approvalAddress": "0x1231DEB6f5749EF6cE6943a275A1D3E7486F4EaE",
+                "feeCosts": [
+                    {
+                        "name": "NearIntents Protocol Fee",
+                        "description": "Fee taken by NearIntents for the protocol",
+                        "token": {
+                            "address": "bitcoin",
+                            "chainId": 20000000000001,
+                            "symbol": "BTC",
+                            "decimals": 8,
+                            "name": "Bitcoin",
+                            "coinKey": "BTC",
+                            "logoURI": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
+                            "priceUSD": "83738.74876002801",
+                            "tags": [
+                                "major_asset"
+                            ],
+                            "verificationStatus": "verified",
+                            "verificationStatusBreakdown": [
+                                {
+                                    "provider": "hypernative",
+                                    "result": "verified",
+                                    "providerResult": "accept"
+                                }
+                            ]
+                        },
+                        "amount": "10",
+                        "amountUSD": "0.0084",
+                        "percentage": "0.0001",
+                        "included": true
+                    },
+                    {
+                        "name": "1ClickSwap API Fee",
+                        "description": "Fee taken by 1ClickSwap for the API call",
+                        "token": {
+                            "address": "bitcoin",
+                            "chainId": 20000000000001,
+                            "symbol": "BTC",
+                            "decimals": 8,
+                            "name": "Bitcoin",
+                            "coinKey": "BTC",
+                            "logoURI": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
+                            "priceUSD": "83738.74876002801",
+                            "tags": [
+                                "major_asset"
+                            ],
+                            "verificationStatus": "verified",
+                            "verificationStatusBreakdown": [
+                                {
+                                    "provider": "hypernative",
+                                    "result": "verified",
+                                    "providerResult": "accept"
+                                }
+                            ]
+                        },
+                        "amount": "10",
+                        "amountUSD": "0.0084",
+                        "percentage": "0.0001",
+                        "included": true
+                    },
+                    {
+                        "name": "NearIntents App Fee",
+                        "description": "Affiliate fee",
+                        "token": {
+                            "address": "bitcoin",
+                            "chainId": 20000000000001,
+                            "symbol": "BTC",
+                            "decimals": 8,
+                            "name": "Bitcoin",
+                            "coinKey": "BTC",
+                            "logoURI": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
+                            "priceUSD": "83738.74876002801",
+                            "tags": [
+                                "major_asset"
+                            ],
+                            "verificationStatus": "verified",
+                            "verificationStatusBreakdown": [
+                                {
+                                    "provider": "hypernative",
+                                    "result": "verified",
+                                    "providerResult": "accept"
+                                }
+                            ]
+                        },
+                        "amount": "100",
+                        "amountUSD": "0.0837",
+                        "percentage": "0.001",
+                        "included": true
+                    }
+                ]
+            },
+            "tool": "near",
+            "toolDetails": {
+                "key": "near",
+                "name": "NearIntents",
+                "logoURI": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/bridges/near.svg"
+            }
+        }
+    ],
+    "integrator": "ika-portal",
+    "executionType": "transaction",
+    "transactionRequest": {
+        "to": "bc1q3hve77l2m7p2wwe35h5cffywepwhje4ayfz2py",
+        "value": "100000",
+        "data": "70736274ff0100b10200000001a444c92afebce30b5972e7e480be682e2f85a1fb9b65ee7e61dd3d06b3fd10790100000000fdffffff04a6850100000000001600148dd99f7beadf82a73b31a5e984a48ec85d7966bd00000000000000000c6a0a3d7c6c69666983126ad1eea07208d30b00002200204364063fac8829a931a752ecd9049e43425e2cebf83681876c556002bf389b0026010000000000001600149ab105ce5f65cc9d3e51e4b2403eef1831eb5bfd000000000001012b542d7408d30b00002200204364063fac8829a931a752ecd9049e43425e2cebf83681876c556002bf389b000000000000"
+    },
+    "transactionId": "0x83126ad1"
+}

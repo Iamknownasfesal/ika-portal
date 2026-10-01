@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "types": ["node", "vite/client"],
+    "baseUrl": ".",
+    "paths": {
+      "@ika.xyz/pre-alpha-solana-client/grpc-web": ["../../packages/signer/types/ika-client-grpc.d.ts"],
+      "@ika.xyz/pre-alpha-solana-client/grpc": ["../../packages/signer/types/ika-client-grpc.d.ts"]
+    }
+  },
+  "include": ["src", "vite.config.ts"]
+}

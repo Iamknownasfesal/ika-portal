@@ -1,0 +1,85 @@
+# Local networks for Ika Portal: Solana (+ programs), two EVM chains (Prague), Bitcoin regtest, relayer.
+#   docker compose -f docker/compose.yaml up -d --wait                 # start the networks
+#   pnpm test:e2e:docker                                               # run e2e from the host against them
+#   docker compose -f docker/compose.yaml --profile test run --rm tests  # or run e2e inside a container
+name: ika-portal
+
+x-anvil: &anvil
+  image: ghcr.io/foundry-rs/foundry:latest
+  healthcheck:
+    test: ["CMD", "cast", "block-number", "--rpc-url", "http://127.0.0.1:8545"]
+    interval: 2s
+    retries: 30
+
+services:
+  solana:
+    build: { context: .., dockerfile: docker/solana/Dockerfile }
+    image: ika-portal/solana-validator:local
+    ports: ["8899:8899", "8900:8900"]
+    # Agave 4.x requires io_uring, which Docker's default seccomp profile blocks.
+    security_opt: ["seccomp=unconfined"]
+
+  ethereum:
+    <<: *anvil
+    entrypoint: ["anvil", "--host", "0.0.0.0", "--port", "8545", "--hardfork", "prague", "--chain-id", "31337"]
+    ports: ["8545:8545"]
+
+  base:
+    <<: *anvil
+    entrypoint: ["anvil", "--host", "0.0.0.0", "--port", "8545", "--hardfork", "prague", "--chain-id", "31338"]
+    ports: ["8546:8545"]
+
+  bitcoind:
+    image: bitcoin/bitcoin:30.0
+    command:
+      - bitcoind
+      - -regtest
+      - -server=1
+      - -rpcuser=ika
+      - -rpcpassword=ika
+      - -rpcbind=0.0.0.0
+      - -rpcallowip=0.0.0.0/0
+      - -rpcport=18443
+      - -fallbackfee=0.0002
+      - -txindex=1
+      - -listen=0
+    ports: ["18443:18443"]
+    healthcheck:
+      test: ["CMD", "bitcoin-cli", "-regtest", "-rpcuser=ika", "-rpcpassword=ika", "-rpcport=18443", "getblockchaininfo"]
+      interval: 2s
+      retries: 30
+
+  # IkaAccount + mock USDC are deployed by the tests from anvil account #0 at nonces 0 and 1,
+  # so their addresses are deterministic on a fresh chain.
+  relayer:
+    build: { context: .., dockerfile: docker/runner/Dockerfile }
+    image: ika-portal/runner:local
+    command: ["pnpm", "--filter", "@ika-portal/relayer", "start"]
+    environment:
+      HOST: 0.0.0.0
+      PORT: "8787"
+      RELAYER_PRIVATE_KEY: "0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d" # anvil #1 (public dev key)
+      RELAYER_CHAINS: '{"31337":{"rpc":"http://ethereum:8545","implementation":"0x5FbDB2315678afecb367f032d93F642f64180aa3"},"31338":{"rpc":"http://base:8545","implementation":"0x5FbDB2315678afecb367f032d93F642f64180aa3"}}'
+    ports: ["8787:8787"]
+    depends_on:
+      ethereum: { condition: service_healthy }
+      base: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8787/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 2s
+      retries: 60
+
+  tests:
+    profiles: [test]
+    image: ika-portal/runner:local
+    environment:
+      E2E_EXTERNAL: "1"
+      E2E_SOLANA_RPC: http://solana:8899
+      E2E_ETH_RPC: http://ethereum:8545
+      E2E_BASE_RPC: http://base:8545
+      E2E_BITCOIND_URL: http://bitcoind:18443
+      E2E_RELAYER_URL: http://relayer:8787
+    depends_on:
+      solana: { condition: service_healthy }
+      bitcoind: { condition: service_healthy }
+      relayer: { condition: service_healthy }

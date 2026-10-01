@@ -1,0 +1,17 @@
+{
+  "name": "@ika-portal/relayer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "start": "tsx src/main.ts",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "dependencies": {
+    "@ika-portal/chains": "workspace:*",
+    "viem": "^2.57.1"
+  },
+  "license": "BSD-3-Clause-Clear"
+}

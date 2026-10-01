@@ -1,0 +1,14 @@
+{
+    "status": "success",
+    "details": "",
+    "inTxHashes": [
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    ],
+    "txHashes": [
+        "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    ],
+    "updatedAt": 1790800000000,
+    "originChainId": 8253038,
+    "destinationChainId": 8453,
+    "_note": "HAND-CRAFTED per Relay OpenAPI /intents/status/v3 example"
+}

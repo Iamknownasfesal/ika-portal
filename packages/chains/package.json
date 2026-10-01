@@ -1,0 +1,24 @@
+{
+  "name": "@ika-portal/chains",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p .",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@bitcoinerlab/secp256k1": "^2.0.0",
+    "@noble/curves": "^2.4.0",
+    "@noble/hashes": "^2.4.0",
+    "@scure/bip32": "^2.4.0",
+    "@scure/bip39": "^2.4.0",
+    "bitcoinjs-lib": "^7.0.2",
+    "buffer": "^6.0.3",
+    "ecpair": "^3.0.2",
+    "viem": "^2.57.1"
+  },
+  "license": "BSD-3-Clause-Clear"
+}

@@ -1,0 +1,28 @@
+[package]
+name = "test_cpi_owner"
+version = "0.1.0"
+description = "Test program: a vault PDA that executes instructions via invoke_signed (Squads stand-in)"
+edition.workspace = true
+license = "BSD-3-Clause-Clear"
+rust-version.workspace = true
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "test_cpi_owner"
+
+[features]
+default = []
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build"]
+anchor-debug = []
+custom-heap = []
+custom-panic = []
+
+[dependencies]
+anchor-lang = "1.2.0"
+
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(target_os, values("solana"))'] }
